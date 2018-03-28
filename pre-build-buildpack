@@ -57,6 +57,7 @@ fi
 
 id=$(docker run $DOKKU_GLOBAL_RUN_ARGS "${ARG_ARRAY[@]}" $IMAGE /bin/bash -e -c "$COMMAND")
 #enable logs
+echo $id
 docker attach $id
 test $(docker wait $id) -eq 0
 docker commit $id $IMAGE > /dev/null
